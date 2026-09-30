@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RoadRescue â€” 24/7 Towing & Roadside Assistance</title>
+<link rel="stylesheet" href="towing.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">ðŸš› Road<span>Rescue</span></a>
+
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#request">Request</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#area">Coverage</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </nav>
+
+    <div class="navr">
+      <a class="btn btn-d callhdr" href="tel:+18005550199">ðŸ“ž 1-800-555-0199</a>
+      <button class="icon-btn" id="theme" aria-label="Toggle dark mode">ðŸŒ“</button>
+      <button class="icon-btn" id="burger" aria-label="Menu" aria-expanded="false">â˜°</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <div class="wrap grid">
+      <div>
+        <span class="eyebrow" style="color:#fdba74">24/7 Â· Average arrival 18 min</span>
+        <h1>Stranded? <em>Help is minutes away.</em></h1>
+        <p>Professional towing and roadside assistance. Tell us where you are â€” we'll dispatch the nearest driver and keep you updated every step.</p>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+          <a href="#request" class="btn btn-p sos" id="sos">ðŸš¨ Get Emergency Help Now</a>
+          <a href="tel:+18005550199" class="btn btn-g" style="color:#fff;border-color:rgba(255,255,255,.4)">ðŸ“ž Call 1-800-555-0199</a>
+        </div>
+
+        <div class="stats">
+          <div><b>12 min</b><small>Nearest truck</small></div>
+          <div><b>4.9â˜…</b><small>12,400 reviews</small></div>
+          <div><b>24/7</b><small>Every day</small></div>
+        </div>
+      </div>
+
+      <div class="glass">
+        <div class="live"><span class="dot"></span> Live availability</div>
+        <h3 style="margin-top:14px">Drivers available now</h3>
+        <div class="eta" id="avail">14</div>
+        <p style="margin:.3em 0 0;font-size:.95rem">Downtown Â· Midtown Â· Airport corridor</p>
+        <button class="btn btn-g" style="color:#fff;border-color:rgba(255,255,255,.4);margin-top:14px;width:100%" id="loc">ðŸ“ Use my current location</button>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <span class="eyebrow">What we do</span>
+      <h2>Choose your service</h2>
+      <p class="mute">Select a service to start your request â€” pricing updates instantly.</p>
+      <div class="cards" id="svcs" role="radiogroup" aria-label="Services"></div>
+    </div>
+  </section>
+
+  <section id="request" style="background:var(--card)">
+    <div class="wrap">
+      <span class="eyebrow">Request help</span>
+      <h2>Where are you, and what do you need?</h2>
+
+      <div class="two">
+        <form class="card" id="form" novalidate>
+          <div class="fg">
+            <label for="service">Service</label>
+            <select id="service" required></select>
+            <span class="err"></span>
+          </div>
+
+          <div class="row">
+            <div class="fg">
+              <label for="name">Full name</label>
+              <input id="name" required autocomplete="name">
+              <span class="err"></span>
+            </div>
+            <div class="fg">
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" required placeholder="+1 555 123 4567" autocomplete="tel">
+              <span class="err"></span>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label for="pickup">Pickup location</label>
+            <input id="pickup" required placeholder="Street, landmark or highway marker">
+            <span class="err"></span>
+          </div>
+
+          <div class="fg" id="destg">
+            <label for="dest">Destination</label>
+            <input id="dest" placeholder="Repair shop or home address">
+            <span class="err"></span>
+          </div>
+
+          <div class="row">
+            <div class="fg">
+              <label for="vehicle">Vehicle type</label>
+              <select id="vehicle">
+                <option value="car">Car / Sedan</option>
+                <option value="suv">SUV / Pickup</option>
+                <option value="van">Van / Minibus</option>
+                <option value="heavy">Heavy duty</option>
+                <option value="moto">Motorcycle</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="km">Distance: <output id="kmo">15</output> km</label>
+              <input id="km" type="range" min="1" max="300" value="15" style="padding:0">
+            </div>
+          </div>
+
+          <div class="fg">
+            <label for="notes">Additional information</label>
+            <textarea id="notes" rows="3" placeholder="Vehicle make/model, hazards, keys locked inâ€¦"></textarea>
+          </div>
+
+          <button class="btn btn-p" style="width:100%;font-size:1.1rem" type="submit">Request Help Now</button>
+        </form>
+
+        <aside class="card est" aria-live="polite">
+          <h3>Estimated cost</h3>
+          <div class="tot" id="tot">$0</div>
+          <ul id="brk"></ul>
+          <p class="mute" style="font-size:.85rem;margin:0">Final price confirmed by your driver. No hidden fees. Estimated arrival: <b id="etaq">â€”</b></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard">
+    <div class="wrap">
+      <span class="eyebrow">Customer dashboard</span>
+      <h2>Your account</h2>
+
+      <div class="tabs" role="tablist" id="tabs"></div>
+
+      <div class="pan on" id="p-active">
+        <div class="grid2">
+          <div class="card" id="activeCard"></div>
+          <div class="card" id="driverCard"></div>
+        </div>
+      </div>
+
+      <div class="pan" id="p-history">
+        <div class="tools">
+          <input id="q" type="search" placeholder="ðŸ”Ž Search historyâ€¦" aria-label="Search history">
+          <select id="fs" aria-label="Filter">
+            <option value="">All services</option>
+          </select>
+        </div>
+        <div id="hist"></div>
+      </div>
+
+      <div class="pan" id="p-vehicles">
+        <div class="grid2" id="veh"></div>
+        <button class="btn btn-g" id="addv" style="margin-top:14px">ï¼‹ Add vehicle</button>
+      </div>
+
+      <div class="pan" id="p-notes">
+        <div id="notes-list"></div>
+        <button class="btn btn-g" id="readall">Mark all as read</button>
+      </div>
+
+      <div class="pan" id="p-profile">
+        <form class="card" id="prof" style="max-width:520px">
+          <div class="fg">
+            <label for="pn">Name</label>
+            <input id="pn" value="Alex Morgan">
+          </div>
+          <div class="fg">
+            <label for="pe">Email</label>
+            <input id="pe" type="email" value="alex@example.com">
+          </div>
+          <div class="fg">
+            <label for="pp">Phone</label>
+            <input id="pp" value="+1 555 010 2233">
+          </div>
+          <label style="display:flex;gap:8px;align-items:center">
+            <input type="checkbox" checked style="width:auto;min-height:0"> SMS updates
+          </label>
+          <br>
+          <button class="btn btn-p" type="submit">Save changes</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="area" style="background:var(--card)">
+    <div class="wrap">
+      <span class="eyebrow">Coverage</span>
+      <h2>Where we operate</h2>
+
+      <div class="two">
+        <div>
+          <div class="chips" id="zchips"></div>
+          <div class="map" id="map" aria-label="Coverage map"></div>
+        </div>
+        <div class="card" id="zinfo"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <span class="eyebrow">Verified customers</span>
+      <h2>Trusted by drivers every day</h2>
+      <div class="cards" id="rev"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b style="color:#fff;font-size:1.2rem">ðŸš› RoadRescue</b>
+    <p>Emergency line: <a href="tel:+18005550199" style="color:#fdba74;font-weight:700">1-800-555-0199</a> Â· Licensed & insured Â· Â© 2026</p>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-d" href="tel:+18005550199">ðŸ“ž Call now</a>
+  <a class="btn btn-p" href="#request">ðŸš¨ Request help</a>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="md">
+    <h3 id="mt"></h3>
+    <div id="mb"></div>
+    <button class="btn btn-g" style="margin-top:14px;width:100%" id="mc">Close</button>
+  </div>
+</div>
+
+<div id="toasts" role="status" aria-live="polite"></div>
+
+<script src="towing.js" defer></script>
+</body>
+</html>
